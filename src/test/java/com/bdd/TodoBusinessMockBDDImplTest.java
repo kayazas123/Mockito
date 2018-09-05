@@ -2,26 +2,24 @@ package com.bdd;
 
 import com.junit.ex.junittest.todoapp.TodoBusinessImpl;
 import com.junit.ex.junittest.todoapp.TodoService;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class TodoBusinessMockBDDImplTest {
 
     @Mock
@@ -32,6 +30,9 @@ public class TodoBusinessMockBDDImplTest {
 
     @Captor
     private ArgumentCaptor<String> stringArgumentCaptor;
+
+    @Rule
+    public MockitoRule mockitoRule = MockitoJUnit.rule();
 
     @Test
     public void retrieveToDos_MockTest(){
